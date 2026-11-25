@@ -4,590 +4,698 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClassPilot | Your School Hub</title>
+    <title>ClassPilot | Your Learning Command Center</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<!-- LOADING SCREEN -->
-<div id="loading-screen">
-    <div class="loader-logo">C</div>
-    <h1>CLASSPILOT</h1>
-    <p>PREPARING YOUR CLASSROOM...</p>
-    <div class="loading-track"><div></div></div>
-</div>
+    <!-- STARTUP SCREEN -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="robot-container">
+            <div class="robot">
+                <div class="robot-antenna"></div>
+                <div class="robot-head">
+                    <div class="robot-eyes">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="robot-mouth"></div>
+                </div>
+                <div class="robot-body"></div>
+                <div class="robot-legs">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="robot-shadow"></div>
+        </div>
 
-<!-- HEADER -->
-<header class="topbar">
-    <div class="brand">
-        <div class="brand-icon">C</div>
-        <span>ClassPilot</span>
+        <h1 class="loading-title">CLASSPILOT</h1>
+        <p class="loading-subtitle">YOUR LEARNING COMMAND CENTER</p>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <p id="loading-status">INITIALIZING SYSTEM...</p>
     </div>
 
-    <div class="account-area">
-        <span id="connection-status">NOT CONNECTED</span>
-        <button class="profile-button" id="profile-button">CP</button>
-    </div>
-</header>
+    <!-- APPLICATION -->
+    <div id="app" class="app">
 
-<div class="app-layout">
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-logo">C</div>
+                <div>
+                    <h1>ClassPilot</h1>
+                    <span>LEARNING COMMAND CENTER</span>
+                </div>
+            </div>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <div class="sidebar-label">WORKSPACE</div>
+            <div class="topbar-right">
+                <span class="system-status">
+                    <span class="status-dot"></span>
+                    SYSTEM ONLINE
+                </span>
+                <div class="profile-icon">S</div>
+            </div>
+        </header>
 
-        <button class="nav-btn active" data-page="dashboard">
-            <span>⌂</span> Dashboard
-        </button>
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-label">WORKSPACE</div>
 
-        <button class="nav-btn" data-page="classes">
-            <span>▤</span> My Classes
-        </button>
-
-        <button class="nav-btn" data-page="classwork">
-            <span>▣</span> Classwork
-        </button>
-
-        <button class="nav-btn" data-page="missing">
-            <span>!</span> Missing Work
-        </button>
-
-        <button class="nav-btn" data-page="timer">
-            <span>◷</span> Study Center
-        </button>
-
-        <div class="sidebar-bottom">
-            <div class="sidebar-label">ACCOUNT</div>
-
-            <button class="nav-btn" data-page="school">
-                <span>⌂</span> My School
+            <button class="nav-btn active" data-page="dashboard-page">
+                <span>⌂</span> Dashboard
             </button>
 
-            <div class="sidebar-note">CLASSPILOT V2.0</div>
-        </div>
-    </aside>
+            <button class="nav-btn" data-page="classes-page">
+                <span>▤</span> My Classes
+            </button>
 
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
+            <button class="nav-btn" data-page="classwork-page">
+                <span>▣</span> Assignments
+            </button>
 
-        <!-- SCHOOL SETUP -->
-        <section class="page" id="school-page">
-            <div class="welcome-panel">
-                <div class="eyebrow">LET'S GET STARTED</div>
+            <button class="nav-btn" data-page="missing-page">
+                <span>⚑</span> Missing Work
+            </button>
 
-                <h1>Find your school.</h1>
+            <div class="sidebar-label">LEARNING TOOLS</div>
 
-                <p>
-                    Set up your school profile to personalize
-                    your ClassPilot workspace.
-                </p>
+            <button class="nav-btn" data-page="study-page">
+                <span>◷</span> Study Center
+            </button>
 
-                <label for="state-select">
-                    What state is your school in?
-                </label>
+            <button class="nav-btn" data-page="calculator-page">
+                <span>⌗</span> Scientific Calculator
+            </button>
 
-                <select id="state-select">
-                    <option value="">Select your state</option>
-                </select>
+            <div class="sidebar-label">SETTINGS</div>
 
-                <label for="school-name">
-                    What is your school's name?
-                </label>
+            <button class="nav-btn" data-page="school-page">
+                <span>⚙</span> My School
+            </button>
 
-                <input
-                    id="school-name"
-                    placeholder="Enter your school name"
-                >
-
-                <button class="primary-button" id="save-school">
-                    Save School →
-                </button>
-
-                <p class="small-note" id="school-message">
-                    Your school profile is saved in this browser.
-                </p>
+            <div class="sidebar-bottom">
+                <div class="sidebar-status">
+                    <span class="status-dot"></span>
+                    All systems operational
+                </div>
+                <p>CLASSPILOT V2.0</p>
             </div>
-        </section>
+        </aside>
 
-        <!-- DASHBOARD -->
-        <section class="page active" id="dashboard-page">
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
 
-            <div class="page-heading">
-                <div>
-                    <div class="eyebrow">YOUR LEARNING SPACE</div>
-                    <h1>Welcome back!</h1>
-                    <p id="school-display">
-                        Let's get your classroom set up.
-                    </p>
-                </div>
-
-                <button class="primary-button" id="connect-google">
-                    Connect Google Classroom
-                </button>
-            </div>
-
-            <div class="stats-grid">
-
-                <div class="stat-card">
-                    <div class="stat-icon blue">▤</div>
-                    <div class="stat-number" id="class-count">0</div>
-                    <div class="stat-label">MY CLASSES</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon orange">!</div>
-                    <div class="stat-number" id="missing-count">0</div>
-                    <div class="stat-label">MISSING WORK</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon green">✓</div>
-                    <div class="stat-number" id="completed-count">0</div>
-                    <div class="stat-label">TURNED IN</div>
-                </div>
-
-            </div>
-
-            <div class="section-heading">
-                <div>
-                    <h2>Your Classes</h2>
-                    <p>Your classroom courses appear here.</p>
-                </div>
-
-                <button class="text-button" data-goto="classes">
-                    View all →
-                </button>
-            </div>
-
-            <div class="class-grid" id="dashboard-classes">
-                <div class="empty-state">
-                    <div class="empty-icon">▤</div>
-                    <h3>Your classroom is waiting</h3>
-                    <p>Connect your classroom account to load courses.</p>
-
-                    <button class="primary-button" id="connect-google-2">
-                        Connect account
+            <!-- DASHBOARD -->
+            <section id="dashboard-page" class="page active">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">YOUR WORKSPACE</p>
+                        <h2>Welcome to ClassPilot</h2>
+                        <p class="muted">Your learning journey starts here.</p>
+                    </div>
+                    <button class="primary-btn" data-goto="classes-page">
+                        + Add a Class
                     </button>
                 </div>
-            </div>
 
-            <div class="section-heading">
-                <div>
-                    <h2>Upcoming Work</h2>
-                    <p>Assignments from your classes.</p>
-                </div>
-            </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon purple">▤</div>
+                        <p>Total Classes</p>
+                        <h3 id="dashboard-classes">0</h3>
+                        <span>Your active classes</span>
+                    </div>
 
-            <div id="upcoming-list" class="assignment-list">
-                <div class="empty-state compact">
-                    No assignments loaded yet.
-                </div>
-            </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue">▣</div>
+                        <p>Total Assignments</p>
+                        <h3 id="dashboard-assignments">0</h3>
+                        <span>All your schoolwork</span>
+                    </div>
 
-        </section>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">⚑</div>
+                        <p>Missing Work</p>
+                        <h3 id="dashboard-missing">0</h3>
+                        <span>Assignments to catch up on</span>
+                    </div>
 
-        <!-- CLASSES -->
-        <section class="page" id="classes-page">
-
-            <div class="page-heading">
-                <div>
-                    <div class="eyebrow">YOUR SUBJECTS</div>
-                    <h1>My Classes</h1>
-                    <p>Choose a classroom to view its stream and classwork.</p>
-                </div>
-
-                <button class="primary-button" id="refresh-classes">
-                    ↻ Refresh
-                </button>
-            </div>
-
-            <div class="class-grid" id="all-classes">
-                <div class="empty-state">
-                    Your classes will appear here.
-                </div>
-            </div>
-
-        </section>
-
-        <!-- CLASS DETAIL -->
-        <section class="page" id="class-detail-page">
-
-            <button class="text-button back-button" data-goto="classes">
-                ← Back to classes
-            </button>
-
-            <div class="page-heading">
-                <div>
-                    <div class="eyebrow">CLASSROOM</div>
-                    <h1 id="detail-title">Class Name</h1>
-                    <p id="detail-description">Class information</p>
-                </div>
-            </div>
-
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="stream">
-                    Stream
-                </button>
-
-                <button class="tab-btn" data-tab="coursework">
-                    Classwork
-                </button>
-            </div>
-
-            <div id="stream-content"></div>
-            <div id="coursework-content" class="hidden"></div>
-
-        </section>
-
-        <!-- CLASSWORK -->
-        <section class="page" id="classwork-page">
-
-            <div class="eyebrow">ASSIGNMENTS</div>
-            <h1>Classwork</h1>
-
-            <p>See assignments from your connected classes.</p>
-
-            <div id="all-work" class="assignment-list">
-                <div class="empty-state">
-                    Your assignments will appear here.
-                </div>
-            </div>
-
-        </section>
-
-        <!-- MISSING WORK -->
-        <section class="page" id="missing-page">
-
-            <div class="eyebrow">STAY ON TRACK</div>
-            <h1>Missing Work</h1>
-
-            <p>Keep track of assignments that need your attention.</p>
-
-            <div id="missing-work" class="assignment-list">
-                <div class="empty-state">
-                    Your missing-work report will appear here.
-                </div>
-            </div>
-
-        </section>
-
-        <!-- ADVANCED STUDY CENTER -->
-        <section class="page" id="timer-page">
-
-            <div class="eyebrow">FOCUS • LEARN • IMPROVE</div>
-            <h1>Study Center</h1>
-
-            <p>Your personal workspace for focused learning.</p>
-
-            <!-- STUDY STATISTICS -->
-            <div class="study-overview">
-
-                <div class="study-stat">
-                    <span class="study-stat-icon">◷</span>
-                    <div>
-                        <h3 id="study-today">0</h3>
-                        <p>MINUTES TODAY</p>
+                    <div class="stat-card">
+                        <div class="stat-icon green">◷</div>
+                        <p>Study Sessions</p>
+                        <h3 id="dashboard-sessions">0</h3>
+                        <span>Completed focus sessions</span>
                     </div>
                 </div>
 
-                <div class="study-stat">
-                    <span class="study-stat-icon">▤</span>
-                    <div>
-                        <h3 id="study-sessions">0</h3>
-                        <p>COMPLETED SESSIONS</p>
+                <div class="dashboard-grid">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">YOUR COURSES</p>
+                                <h3>My Classes</h3>
+                            </div>
+                            <button class="text-btn" data-goto="classes-page">
+                                View all →
+                            </button>
+                        </div>
+                        <div id="dashboard-class-list" class="class-grid">
+                            <div class="empty-state">
+                                <div class="empty-icon">▤</div>
+                                <h3>No classes yet</h3>
+                                <p>Add your first class to get started.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">STAY ON TRACK</p>
+                                <h3>Upcoming Work</h3>
+                            </div>
+                            <button class="text-btn" data-goto="classwork-page">
+                                View all →
+                            </button>
+                        </div>
+                        <div id="dashboard-upcoming">
+                            <div class="empty-state">
+                                <div class="empty-icon">✓</div>
+                                <h3>Nothing scheduled</h3>
+                                <p>Your upcoming assignments will appear here.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="study-stat">
-                    <span class="study-stat-icon">✦</span>
+                <div class="panel quick-actions">
                     <div>
-                        <h3 id="card-count">0</h3>
-                        <p>FLASHCARDS</p>
+                        <p class="eyebrow">QUICK ACCESS</p>
+                        <h3>What would you like to do?</h3>
+                    </div>
+                    <div class="quick-action-buttons">
+                        <button class="secondary-btn" data-goto="classes-page">＋ Add Class</button>
+                        <button class="secondary-btn" data-goto="classwork-page">＋ Add Assignment</button>
+                        <button class="secondary-btn" data-goto="study-page">◷ Start Studying</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CLASSES -->
+            <section id="classes-page" class="page">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">YOUR COURSES</p>
+                        <h2>My Classes</h2>
+                        <p class="muted">Organize all your school subjects in one place.</p>
                     </div>
                 </div>
 
-            </div>
-
-            <!-- STUDY CENTER LAYOUT -->
-            <div class="study-layout">
-
-                <!-- FOCUS TIMER -->
-                <div class="study-panel timer-panel">
-
-                    <div class="panel-top">
+                <div class="panel">
+                    <div class="panel-header">
                         <div>
-                            <div class="eyebrow">DEEP FOCUS</div>
-                            <h2>Focus Timer</h2>
+                            <p class="eyebrow">CREATE A COURSE</p>
+                            <h3>Add a New Class</h3>
+                        </div>
+                    </div>
+
+                    <form id="class-form" class="form-grid">
+                        <div class="form-field">
+                            <label for="class-name">Class Name</label>
+                            <input id="class-name" type="text" placeholder="Example: Mathematics" required>
                         </div>
 
-                        <span class="study-orb">◉</span>
-                    </div>
+                        <div class="form-field">
+                            <label for="class-teacher">Teacher</label>
+                            <input id="class-teacher" type="text" placeholder="Teacher's name">
+                        </div>
 
-                    <label for="study-subject">Study subject</label>
+                        <div class="form-field">
+                            <label for="class-color">Class Color</label>
+                            <select id="class-color">
+                                <option value="purple">Purple</option>
+                                <option value="blue">Blue</option>
+                                <option value="green">Green</option>
+                                <option value="orange">Orange</option>
+                                <option value="pink">Pink</option>
+                            </select>
+                        </div>
 
-                    <select id="study-subject">
-                        <option>General Study</option>
-                        <option>Mathematics</option>
-                        <option>Science</option>
-                        <option>English</option>
-                        <option>History</option>
-                        <option>Computer Science</option>
-                        <option>Other</option>
-                    </select>
-
-                    <div class="timer-label" id="timer-mode">
-                        FOCUS SESSION
-                    </div>
-
-                    <div class="timer-display" id="timer-display">
-                        25:00
-                    </div>
-
-                    <div class="timer-progress">
-                        <div id="timer-progress-fill"></div>
-                    </div>
-
-                    <div class="timer-controls">
-                        <button class="primary-button" id="timer-start">
-                            Start
-                        </button>
-
-                        <button class="secondary-button" id="timer-reset">
-                            Reset
-                        </button>
-                    </div>
-
-                    <div class="timer-presets">
-                        <button class="preset active" data-minutes="25">
-                            25 min
-                        </button>
-
-                        <button class="preset" data-minutes="45">
-                            45 min
-                        </button>
-
-                        <button class="preset" data-minutes="60">
-                            60 min
-                        </button>
-                    </div>
-
-                    <button class="text-button" id="break-button">
-                        Switch to 5-minute break
-                    </button>
-
-                    <p id="timer-message">
-                        You've got this. One step at a time!
-                    </p>
-
+                        <div class="form-field form-button-field">
+                            <button type="submit" class="primary-btn">Create Class</button>
+                        </div>
+                    </form>
                 </div>
 
-                <!-- DAILY GOALS -->
-                <div class="study-panel">
+                <div class="section-heading">
+                    <h3>Your Courses</h3>
+                    <span id="class-count-label">0 classes</span>
+                </div>
 
-                    <div class="eyebrow">YOUR DAILY TARGET</div>
-                    <h2>Daily Study Goal</h2>
+                <div id="all-classes" class="class-grid">
+                    <div class="empty-state">
+                        <div class="empty-icon">▤</div>
+                        <h3>No classes created</h3>
+                        <p>Your classes will appear here after you add them.</p>
+                    </div>
+                </div>
+            </section>
 
-                    <div class="goal-progress">
+            <!-- ASSIGNMENTS -->
+            <section id="classwork-page" class="page">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">SCHOOLWORK MANAGER</p>
+                        <h2>Assignments</h2>
+                        <p class="muted">Keep track of everything you need to complete.</p>
+                    </div>
+                </div>
 
-                        <div class="goal-circle">
-                            <div class="goal-circle-inner">
-                                <strong id="goal-percent">0%</strong>
-                                <span>COMPLETE</span>
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">NEW SCHOOLWORK</p>
+                            <h3>Create an Assignment</h3>
+                        </div>
+                    </div>
+
+                    <form id="assignment-form" class="form-grid">
+                        <div class="form-field">
+                            <label for="assignment-title">Assignment Name</label>
+                            <input id="assignment-title" type="text" placeholder="Example: Chapter 4 Homework" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="assignment-class">Choose Class</label>
+                            <select id="assignment-class" required>
+                                <option value="">Add a class first</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="assignment-due">Due Date</label>
+                            <input id="assignment-due" type="date" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="assignment-status">Status</label>
+                            <select id="assignment-status">
+                                <option value="pending">Not Started</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="completed">Completed</option>
+                                <option value="missing">Missing</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field full-width">
+                            <label for="assignment-description">Description (Optional)</label>
+                            <textarea id="assignment-description" rows="3" placeholder="Add instructions or reminders..."></textarea>
+                        </div>
+
+                        <div class="form-field form-button-field">
+                            <button type="submit" class="primary-btn">Save Assignment</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="section-heading">
+                    <h3>All Assignments</h3>
+                    <span id="assignment-count-label">0 assignments</span>
+                </div>
+
+                <div id="all-assignments" class="assignment-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">▣</div>
+                        <h3>No assignments yet</h3>
+                        <p>Create an assignment to start tracking your work.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MISSING WORK -->
+            <section id="missing-page" class="page">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">GET BACK ON TRACK</p>
+                        <h2>Missing Work</h2>
+                        <p class="muted">Review assignments that still need attention.</p>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h3>Assignments to Complete</h3>
+                        <span class="warning-label">Needs attention</span>
+                    </div>
+                    <div id="missing-assignments">
+                        <div class="empty-state">
+                            <div class="empty-icon">✓</div>
+                            <h3>You're all caught up!</h3>
+                            <p>Assignments marked as missing will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STUDY CENTER -->
+            <section id="study-page" class="page">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">FOCUS MODE</p>
+                        <h2>Study Center</h2>
+                        <p class="muted">Build better study habits, one session at a time.</p>
+                    </div>
+                    <span class="system-status">
+                        <span class="status-dot"></span>
+                        READY TO FOCUS
+                    </span>
+                </div>
+
+                <div class="study-overview">
+                    <div class="study-stat">
+                        <span>◷</span>
+                        <p>Study Sessions</p>
+                        <h3 id="study-sessions">0</h3>
+                    </div>
+                    <div class="study-stat">
+                        <span>◈</span>
+                        <p>Study Minutes Today</p>
+                        <h3 id="study-today">0</h3>
+                    </div>
+                    <div class="study-stat">
+                        <span>▤</span>
+                        <p>Flashcards Created</p>
+                        <h3 id="card-count">0</h3>
+                    </div>
+                </div>
+
+                <div class="study-layout">
+                    <!-- TIMER -->
+                    <div class="panel timer-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">PRODUCTIVITY TIMER</p>
+                                <h3>Focus Session</h3>
+                            </div>
+                            <select id="study-subject">
+                                <option value="General Study">General Study</option>
+                            </select>
+                        </div>
+
+                        <div class="timer-mode">
+                            <button class="timer-mode-btn active" data-mode="focus">Focus</button>
+                            <button class="timer-mode-btn" data-mode="break">Break</button>
+                        </div>
+
+                        <div class="study-orb">
+                            <div class="timer-display" id="timer-display">25:00</div>
+                            <p id="timer-mode">FOCUS TIME</p>
+                        </div>
+
+                        <div class="timer-progress">
+                            <div id="timer-progress-fill"></div>
+                        </div>
+
+                        <div class="timer-controls">
+                            <button id="timer-start" class="primary-btn">Start Focus</button>
+                            <button id="timer-reset" class="secondary-btn">Reset</button>
+                        </div>
+
+                        <div class="timer-presets">
+                            <button class="preset active" data-minutes="25">25 min</button>
+                            <button class="preset" data-minutes="45">45 min</button>
+                            <button class="preset" data-minutes="60">60 min</button>
+                        </div>
+
+                        <p id="timer-message" class="muted timer-message">Ready when you are. Let's focus!</p>
+                    </div>
+
+                    <!-- DAILY GOAL -->
+                    <div class="panel goal-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">DAILY TARGET</p>
+                                <h3>Study Goal</h3>
+                            </div>
+                            <span class="goal-icon">◎</span>
+                        </div>
+
+                        <div class="goal-progress">
+                            <div class="goal-circle">
+                                <div class="goal-circle-inner">
+                                    <h2 id="goal-percent">0%</h2>
+                                    <span>COMPLETED</span>
+                                </div>
                             </div>
                         </div>
 
-                        <p id="goal-description">
-                            0 of 60 minutes completed today
-                        </p>
+                        <p id="goal-description" class="muted">Set your daily study goal.</p>
 
-                    </div>
-
-                    <label for="goal-input">
-                        Daily goal in minutes
-                    </label>
-
-                    <div class="goal-input-row">
-                        <input
-                            type="number"
-                            id="goal-input"
-                            min="5"
-                            max="600"
-                            value="60"
-                        >
-
-                        <button class="primary-button" id="save-goal">
-                            Save Goal
-                        </button>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- NOTES -->
-            <div class="study-panel notes-panel">
-
-                <div class="eyebrow">YOUR WORKSPACE</div>
-                <h2>Study Notes</h2>
-
-                <label for="notes-title">
-                    Notes title
-                </label>
-
-                <input
-                    id="notes-title"
-                    placeholder="Example: Algebra Notes"
-                >
-
-                <label for="study-notes">
-                    Your notes
-                </label>
-
-                <textarea
-                    id="study-notes"
-                    rows="8"
-                    placeholder="Write your study notes here..."
-                ></textarea>
-
-                <div class="notes-actions">
-                    <button class="primary-button" id="save-notes">
-                        Save Notes
-                    </button>
-
-                    <span id="notes-status">
-                        Your notes are stored in this browser.
-                    </span>
-                </div>
-
-            </div>
-
-            <!-- FLASHCARDS -->
-            <div class="study-panel">
-
-                <div class="eyebrow">ACTIVE RECALL</div>
-                <h2>Flashcard Laboratory</h2>
-
-                <div class="flashcard-creator">
-
-                    <label for="flash-question">
-                        Question
-                    </label>
-
-                    <input
-                        id="flash-question"
-                        placeholder="Enter a question..."
-                    >
-
-                    <label for="flash-answer">
-                        Answer
-                    </label>
-
-                    <input
-                        id="flash-answer"
-                        placeholder="Enter the answer..."
-                    >
-
-                    <button class="primary-button" id="add-flashcard">
-                        + Create Flashcard
-                    </button>
-
-                </div>
-
-                <div class="flashcard-display">
-
-                    <span id="flashcard-hint">
-                        Create your first flashcard to begin.
-                    </span>
-
-                    <h2 id="flashcard-text">
-                        Your flashcards will appear here.
-                    </h2>
-
-                    <p id="flashcard-counter">0 / 0</p>
-
-                </div>
-
-                <div class="flashcard-controls">
-
-                    <button class="secondary-button" id="previous-card">
-                        ← Previous
-                    </button>
-
-                    <button class="primary-button" id="flip-card">
-                        Flip Card
-                    </button>
-
-                    <button class="secondary-button" id="next-card">
-                        Next →
-                    </button>
-
-                </div>
-
-            </div>
-
-            <!-- STUDY HISTORY -->
-            <div class="study-panel history-panel">
-
-                <div class="eyebrow">YOUR PROGRESS</div>
-                <h2>Study Session History</h2>
-
-                <div id="study-history">
-                    <div class="empty-state">
-                        No completed study sessions yet.
-                        Your progress will appear here.
+                        <div class="goal-input-row">
+                            <input id="goal-input" type="number" min="1" max="600" placeholder="Minutes">
+                            <button id="save-goal" class="primary-btn">Save Goal</button>
+                        </div>
                     </div>
                 </div>
 
-            </div>
+                <!-- NOTES -->
+                <div class="study-layout">
+                    <div class="panel notes-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">YOUR WORKSPACE</p>
+                                <h3>Study Notes</h3>
+                            </div>
+                            <span>✎</span>
+                        </div>
 
-        </section>
+                        <input id="notes-title" type="text" placeholder="Notes title...">
+                        <textarea id="study-notes" rows="8" placeholder="Write your study notes here..."></textarea>
 
-        <!-- MY SCHOOL -->
-        <section class="page" id="school-page">
+                        <div class="notes-actions">
+                            <span id="notes-status" class="muted">Notes are saved on this device.</span>
+                            <button id="save-notes" class="primary-btn">Save Notes</button>
+                        </div>
+                    </div>
 
-            <div class="eyebrow">ACCOUNT SETTINGS</div>
-            <h1>My School</h1>
+                    <!-- FLASHCARDS -->
+                    <div class="panel flashcard-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">ACTIVE RECALL</p>
+                                <h3>Flashcards</h3>
+                            </div>
+                            <span>◇</span>
+                        </div>
 
-            <p>Manage your school profile.</p>
+                        <div class="flashcard-creator">
+                            <input id="flash-question" type="text" placeholder="Enter a question...">
+                            <textarea id="flash-answer" rows="2" placeholder="Enter the answer..."></textarea>
+                            <button id="add-flashcard" class="primary-btn">＋ Create Flashcard</button>
+                        </div>
 
-            <div class="welcome-panel">
+                        <div class="flashcard-display" id="flashcard-display">
+                            <p class="eyebrow">YOUR FLASHCARD</p>
+                            <h3 id="flashcard-text">No flashcards yet</h3>
+                            <p id="flashcard-hint">Create one above to get started.</p>
+                        </div>
 
-                <label for="state-select">
-                    State
-                </label>
+                        <div class="flashcard-controls">
+                            <button id="previous-card" class="secondary-btn">← Previous</button>
+                            <button id="flip-card" class="primary-btn">Reveal Answer</button>
+                            <button id="next-card" class="secondary-btn">Next →</button>
+                        </div>
 
-                <select id="state-select">
-                    <option value="">Select your state</option>
-                </select>
+                        <p id="flashcard-counter" class="muted">0 cards</p>
+                    </div>
+                </div>
 
-                <label for="school-name">
-                    School name
-                </label>
+                <!-- STUDY HISTORY -->
+                <div class="panel history-panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">YOUR PROGRESS</p>
+                            <h3>Study History</h3>
+                        </div>
+                    </div>
+                    <div id="study-history">
+                        <div class="empty-state">
+                            <div class="empty-icon">◷</div>
+                            <h3>No sessions yet</h3>
+                            <p>Your completed focus sessions will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                <input
-                    id="school-name"
-                    placeholder="Enter your school name"
-                >
+            <!-- SCIENTIFIC CALCULATOR -->
+            <section id="calculator-page" class="page">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">LEARNING TOOLS</p>
+                        <h2>Scientific Calculator</h2>
+                        <p class="muted">A calculator workspace for your math assignments.</p>
+                    </div>
+                </div>
 
-                <button class="primary-button" id="save-school">
-                    Save School
-                </button>
+                <div class="panel calculator-panel">
+                    <div class="calculator-display">
+                        <div id="calculator-expression"></div>
+                        <input id="calculator-display" type="text" value="0" readonly>
+                    </div>
 
-                <p id="school-message"></p>
+                    <div class="calculator-grid">
+                        <button class="calc-btn function" data-action="clear">AC</button>
+                        <button class="calc-btn function" data-action="delete">DEL</button>
+                        <button class="calc-btn function" data-value="(">(</button>
+                        <button class="calc-btn function" data-value=")">)</button>
+                        <button class="calc-btn function" data-value="÷">÷</button>
 
-            </div>
+                        <button class="calc-btn function" data-value="sin(">sin</button>
+                        <button class="calc-btn function" data-value="cos(">cos</button>
+                        <button class="calc-btn function" data-value="tan(">tan</button>
+                        <button class="calc-btn function" data-value="√(">√</button>
+                        <button class="calc-btn function" data-value="×">×</button>
 
-        </section>
+                        <button class="calc-btn" data-value="7">7</button>
+                        <button class="calc-btn" data-value="8">8</button>
+                        <button class="calc-btn" data-value="9">9</button>
+                        <button class="calc-btn function" data-value="^">^</button>
+                        <button class="calc-btn function" data-value="-">−</button>
 
-    </main>
-</div>
+                        <button class="calc-btn" data-value="4">4</button>
+                        <button class="calc-btn" data-value="5">5</button>
+                        <button class="calc-btn" data-value="6">6</button>
+                        <button class="calc-btn function" data-value="π">π</button>
+                        <button class="calc-btn function" data-value="+">+</button>
 
-<!-- TOAST NOTIFICATION -->
-<div id="toast" class="toast"></div>
+                        <button class="calc-btn" data-value="1">1</button>
+                        <button class="calc-btn" data-value="2">2</button>
+                        <button class="calc-btn" data-value="3">3</button>
+                        <button class="calc-btn function" data-value="log(">log</button>
+                        <button class="calc-btn function" data-value="÷">÷</button>
 
-<!-- JAVASCRIPT -->
-<script src="script.js"></script>
+                        <button class="calc-btn" data-value="0">0</button>
+                        <button class="calc-btn" data-value=".">.</button>
+                        <button class="calc-btn function" data-value="e">e</button>
+                        <button class="calc-btn function" data-value="%">%</button>
+                        <button class="calc-btn equals" data-action="calculate">=</button>
+                    </div>
+                    <p class="muted calculator-note">Trigonometric functions use degrees.</p>
+                </div>
+            </section>
 
+            <!-- SCHOOL SETTINGS -->
+            <section id="school-page" class="page">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">PERSONAL SETTINGS</p>
+                        <h2>My School</h2>
+                        <p class="muted">Set up your learning profile.</p>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">SCHOOL PROFILE</p>
+                            <h3>Your Information</h3>
+                        </div>
+                    </div>
+
+                    <form id="school-form" class="form-grid">
+                        <div class="form-field">
+                            <label for="student-name">Student Name</label>
+                            <input id="student-name" type="text" placeholder="Your name">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="school-name">School Name</label>
+                            <input id="school-name" type="text" placeholder="Your school">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="school-state">State</label>
+                            <select id="school-state">
+                                <option value="">Choose your state</option>
+                                <option>Alabama</option>
+                                <option>Alaska</option>
+                                <option>Arizona</option>
+                                <option>Arkansas</option>
+                                <option>California</option>
+                                <option>Colorado</option>
+                                <option>Connecticut</option>
+                                <option>Delaware</option>
+                                <option>Florida</option>
+                                <option>Georgia</option>
+                                <option>Hawaii</option>
+                                <option>Idaho</option>
+                                <option>Illinois</option>
+                                <option>Indiana</option>
+                                <option>Iowa</option>
+                                <option>Kansas</option>
+                                <option>Kentucky</option>
+                                <option>Louisiana</option>
+                                <option>Maine</option>
+                                <option>Maryland</option>
+                                <option>Massachusetts</option>
+                                <option>Michigan</option>
+                                <option>Minnesota</option>
+                                <option>Mississippi</option>
+                                <option>Missouri</option>
+                                <option>Montana</option>
+                                <option>Nebraska</option>
+                                <option>Nevada</option>
+                                <option>New Hampshire</option>
+                                <option>New Jersey</option>
+                                <option>New Mexico</option>
+                                <option>New York</option>
+                                <option>North Carolina</option>
+                                <option>North Dakota</option>
+                                <option>Ohio</option>
+                                <option>Oklahoma</option>
+                                <option>Oregon</option>
+                                <option>Pennsylvania</option>
+                                <option>Rhode Island</option>
+                                <option>South Carolina</option>
+                                <option>South Dakota</option>
+                                <option>Tennessee</option>
+                                <option>Texas</option>
+                                <option>Utah</option>
+                                <option>Vermont</option>
+                                <option>Virginia</option>
+                                <option>Washington</option>
+                                <option>West Virginia</option>
+                                <option>Wisconsin</option>
+                                <option>Wyoming</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field form-button-field">
+                            <button type="submit" class="primary-btn">Save Profile</button>
+                        </div>
+                    </form>
+
+                    <p id="school-message" class="muted"></p>
+                </div>
+            </section>
+
+            <footer class="app-footer">
+                <span>CLASSPILOT V2.0</span>
+                <span>BUILT FOR BETTER LEARNING</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
