@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassPilot | Your School Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loading-screen">
+    <div class="loader-logo">C</div>
+    <h1>CLASSPILOT</h1>
+    <p>PREPARING YOUR CLASSROOM...</p>
+    <div class="loading-track"><div></div></div>
+</div>
+
+<header class="topbar">
+    <div class="brand">
+        <div class="brand-icon">C</div>
+        <span>ClassPilot</span>
+    </div>
+    <div class="account-area">
+        <span id="connection-status">NOT CONNECTED</span>
+        <button class="profile-button" id="profile-button">CP</button>
+    </div>
+</header>
+
+<div class="app-layout">
+    <aside class="sidebar">
+        <div class="sidebar-label">WORKSPACE</div>
+        <button class="nav-btn active" data-page="dashboard">
+            <span>⌂</span> Dashboard
+        </button>
+        <button class="nav-btn" data-page="classes">
+            <span>▤</span> My Classes
+        </button>
+        <button class="nav-btn" data-page="classwork">
+            <span>▣</span> Classwork
+        </button>
+        <button class="nav-btn" data-page="missing">
+            <span>!</span> Missing Work
+        </button>
+        <button class="nav-btn" data-page="timer">
+            <span>◷</span> Study Center
+        </button>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-label">ACCOUNT</div>
+            <button class="nav-btn" data-page="school">
+                <span>⌂</span> My School
+            </button>
+            <div class="sidebar-note">CLASSPILOT V1.0</div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <!-- SCHOOL SETUP -->
+        <section class="page" id="school-page">
+            <div class="welcome-panel">
+                <div class="eyebrow">LET'S GET STARTED</div>
+                <h1>Find your school.</h1>
+                <p>Tell us where you go to school so we can set up your workspace.</p>
+
+                <label for="state-select">What state is your school in?</label>
+                <select id="state-select">
+                    <option value="">Select your state</option>
+                </select>
+
+                <label for="school-name">What is your school's name?</label>
+                <input id="school-name" placeholder="Enter your school name">
+
+                <button class="primary-button" id="save-school">
+                    Continue →
+                </button>
+                <p class="small-note" id="school-message">
+                    Your school selection is a profile setting. Google Classroom supplies your actual classes.
+                </p>
+            </div>
+        </section>
+
+        <!-- DASHBOARD -->
+        <section class="page active" id="dashboard-page">
+            <div class="page-heading">
+                <div>
+                    <div class="eyebrow">YOUR LEARNING SPACE</div>
+                    <h1>Welcome back!</h1>
+                    <p id="school-display">Let's get your classroom connected.</p>
+                </div>
+                <button class="primary-button" id="connect-google">
+                    Connect Google Classroom
+                </button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">▤</div>
+                    <div class="stat-number" id="class-count">0</div>
+                    <div class="stat-label">MY CLASSES</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">!</div>
+                    <div class="stat-number" id="missing-count">0</div>
+                    <div class="stat-label">MISSING WORK</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div class="stat-number" id="completed-count">0</div>
+                    <div class="stat-label">TURNED IN</div>
+                </div>
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <h2>Your Classes</h2>
+                    <p>Your real Google Classroom courses appear here after connecting.</p>
+                </div>
+                <button class="text-button" data-goto="classes">View all →</button>
+            </div>
+
+            <div class="class-grid" id="dashboard-classes">
+                <div class="empty-state">
+                    <div class="empty-icon">▤</div>
+                    <h3>Your classroom is waiting</h3>
+                    <p>Connect your Google Classroom account to load your actual subjects.</p>
+                    <button class="primary-button" id="connect-google-2">Connect account</button>
+                </div>
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <h2>Upcoming Work</h2>
+                    <p>Assignments from your classes.</p>
+                </div>
+            </div>
+            <div id="upcoming-list" class="assignment-list">
+                <div class="empty-state compact">No assignments loaded yet.</div>
+            </div>
+        </section>
+
+        <!-- CLASSES -->
+        <section class="page" id="classes-page">
+            <div class="page-heading">
+                <div>
+                    <div class="eyebrow">YOUR SUBJECTS</div>
+                    <h1>My Classes</h1>
+                    <p>Choose a classroom to view its stream and classwork.</p>
+                </div>
+                <button class="primary-button" id="refresh-classes">↻ Refresh</button>
+            </div>
+            <div class="class-grid" id="all-classes">
+                <div class="empty-state">Connect Google Classroom to see your classes.</div>
+            </div>
+        </section>
+
+        <!-- CLASS DETAIL -->
+        <section class="page" id="class-detail-page">
+            <button class="text-button back-button" data-goto="classes">← Back to classes</button>
+            <div class="page-heading">
+                <div>
+                    <div class="eyebrow">CLASSROOM</div>
+                    <h1 id="detail-title">Class Name</h1>
+                    <p id="detail-description">Class information</p>
+                </div>
+            </div>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="stream">Stream</button>
+                <button class="tab-btn" data-tab="coursework">Classwork</button>
+            </div>
+            <div id="stream-content"></div>
+            <div id="coursework-content" class="hidden"></div>
+        </section>
+
+        <!-- CLASSWORK -->
+        <section class="page" id="classwork-page">
+            <div class="eyebrow">ASSIGNMENTS</div>
+            <h1>Classwork</h1>
+            <p>See assignments from all your connected classes.</p>
+            <div id="all-work" class="assignment-list">
+                <div class="empty-state">Connect your account to load classwork.</div>
+            </div>
+        </section>
+
+        <!-- MISSING -->
+        <section class="page" id="missing-page">
+            <div class="eyebrow">STAY ON TRACK</div>
+            <h1>Missing Work</h1>
+            <p>Overdue assignments that have not been turned in.</p>
+            <div id="missing-work" class="assignment-list">
+                <div class="empty-state">Your missing-work report will appear here.</div>
+            </div>
+        </section>
+
+        <!-- TIMER -->
+        <section class="page" id="timer-page">
+            <div class="eyebrow">FOCUS AND LEARN</div>
+            <h1>Study Center</h1>
+            <p>Take control of your study sessions.</p>
+
+            <div class="timer-panel">
+                <div class="timer-label" id="timer-mode">FOCUS SESSION</div>
+                <div class="timer-display" id="timer-display">25:00</div>
+                <div class="timer-progress">
+                    <div id="timer-progress-fill"></div>
+                </div>
+                <div class="timer-controls">
+                    <button class="primary-button" id="timer-start">Start</button>
+                    <button class="secondary-button" id="timer-reset">Reset</button>
+                </div>
+                <div class="timer-presets">
+                    <button class="preset active" data-minutes="25">25 min</button>
+                    <button class="preset" data-minutes="45">45 min</button>
+                    <button class="preset" data-minutes="60">60 min</button>
+                </div>
+                <button class="text-button" id="break-button">Switch to 5-minute break</button>
+                <p id="timer-message">You've got this. One step at a time!</p>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
